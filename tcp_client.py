@@ -9,7 +9,7 @@ import socket
 
 def main():
     # TODO: Create a socket and connect it to the server at the designated IP and port
-    HOST = "????" 
+    HOST = "192.168.64.3" 
     PORT = 10000
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((HOST, PORT))
