@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
 	
 	// TODO: Fill out the server ip and port
 	std::string server_ip = "192.168.64.3";
-	std::string server_port = "10000";
+	std::string server_port = "2003";
 
 	int opt = 1;
 	int client_fd = -1;
@@ -47,17 +47,17 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
-	if (connect(client_fd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) 
-        error("ERROR connecting");
+	(connect(client_fd, server_addr->ai_addr, server_addr->ai_addrlen);
+    
 	// TODO: Retreive user input
-	std::cin>>socket_red_beffer;
+	std::cin>>socket_read_beffer;
     	
 	// TODO: Send() the user input to the server
-	n = send(client_fd,socket_read_buffer,strlen(socket_read_buffer));
+	n = write(client_fd,socket_read_buffer,strlen(socket_read_buffer));
 	
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
 	n = read(client_fd,socket_read_buffer,1023);
-	printf("%s\n\0",socket_read_buffer);
+	printf("%s\n",socket_read_buffer);
 	// TODO: Close() the socket
 	close(client_fd);
 	
