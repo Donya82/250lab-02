@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
 	int client_fd = -1;
 
 	// TODO: Create a TCP socket()
-	int socket, n;
+	int socket, sendn, recieven;
 	
 	socket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -53,11 +53,11 @@ int main(int argc, char const *argv[])
     	bzero(socket_read_buffer,1024);
     	fgets(socket_read_buffer,1023,stdin);
 	// TODO: Send() the user input to the server
-	n = write(sockfd,buffer,strlen(buffer));
+	sendn = write(sockfd,buffer,strlen(socket_read_buffer));
 	
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
-	n = read(socked,socket_read_buffer,1023);
-	printf("%s\n",socket_read_buffer);
+	recieven = read(socked,socket_read_buffer,1023);
+	printf("%s\n\0",socket_read_buffer);
 	// TODO: Close() the socket
 	close(socket);
 	
