@@ -15,10 +15,10 @@ def main():
     sock.connect((HOST, PORT))
     # TODO: Get user input and send it to the server using your TCP socket
     data=input()
-	sock.sendall(data)
+    sock.sendall(data)
     # TODO: Receive a response from the server and close the TCP connection
     datar=sock.recv(10000)
-	sock.close()
+    sock.close()
     
     pass
 
