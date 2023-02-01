@@ -23,9 +23,9 @@ int main(int argc, char const *argv[])
 	int client_fd = -1;
 
 	// TODO: Create a TCP socket()
-	int socket, n;
-	
-	socket = socket(AF_INET, SOCK_STREAM, 0);
+	int n;
+	client_fd = socket(AF_INET, SOCK_STREAM, 0);
+	printf("%d", client_fd);
 
 	// Enable reusing address and port
 	if (setsockopt(client_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) { 
@@ -47,19 +47,19 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
-	connect(socket,&serv_addr,sizeof(serv_addr);
+	if (connect(client_fd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) 
+        error("ERROR connecting");
 	// TODO: Retreive user input
-	printf("Please enter the message: ");
-    	bzero(socket_read_buffer,1024);
-    	fgets(socket_read_buffer,1023,stdin);
+	std::cin>>socket_red_beffer;
+    	
 	// TODO: Send() the user input to the server
-	n = write(sockfd,buffer,strlen(socket_read_buffer));
+	n = send(client_fd,socket_read_buffer,strlen(socket_read_buffer));
 	
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
-	n = read(socked,socket_read_buffer,1023);
+	n = read(client_fd,socket_read_buffer,1023);
 	printf("%s\n\0",socket_read_buffer);
 	// TODO: Close() the socket
-	close(socket);
+	close(client_fd);
 	
 
 	return 0; 
