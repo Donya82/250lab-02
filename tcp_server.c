@@ -18,7 +18,7 @@ void error(const char *msg)
 int main(int argc, char *argv[])
 {
     /* 1. What is argc and *argv[]?
-     *
+     * argc is the number of arguments on the command line while argv[] is an array containing the string of argument 
      */
     int sockfd, newsockfd, portno;
     /* 2. What is a UNIX file descriptor and file descriptor table?
