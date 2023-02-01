@@ -48,24 +48,20 @@ int main(int argc, char const *argv[])
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
 	if(connect(client_fd, server_addr->ai_addr, server_addr->ai_addrlen)<0){
-		error("error connecting");
+		printf("error connecting");
 	}
     
 	// TODO: Retreive user input
-	bzero(socket_read_buffer, strlen(socket_read_buffer));
+	bzero(socket_read_buffer,255);
 	scanf("%19[^\n]",socket_read_buffer);
     	
 	// TODO: Send() the user input to the server
-	n = write(client_fd,socket_read_buffer,256);
+	n = write(client_fd,socket_read_buffer,255);
 	if (n<0){
-		error("ERROR write");
+		printf("ERROR write");
 	}
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
 	n = read(client_fd,socket_read_buffer,1023);
 	printf("%s\n",socket_read_buffer);
 	// TODO: Close() the socket
 	close(client_fd);
-	
-
-	return 0; 
-} 
