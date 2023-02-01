@@ -17,12 +17,13 @@ int main(int argc, char const *argv[])
 	
 	// TODO: Fill out the server ip and port
 	std::string server_ip = "";
-	std::string server_port = "";
+	std::string server_port = "10000";
 
 	int opt = 1;
 	int client_fd = -1;
 
 	// TODO: Create a TCP socket()
+	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
 
 	// Enable reusing address and port
 	if (setsockopt(client_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) { 
@@ -44,10 +45,15 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
+	sock.connect((HOST, PORT));
 	// TODO: Retreive user input
+	data=input();
 	// TODO: Send() the user input to the server
+	sock.sendall(data);
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
+	datar=sock.recv(10000);
 	// TODO: Close() the socket
+	sock.close();
 
 	return 0; 
 } 
