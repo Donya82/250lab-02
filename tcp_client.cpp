@@ -23,7 +23,9 @@ int main(int argc, char const *argv[])
 	int client_fd = -1;
 
 	// TODO: Create a TCP socket()
-	sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM);
+	int socket, n;
+	
+	socket = socket(AF_INET, SOCK_STREAM, 0);
 
 	// Enable reusing address and port
 	if (setsockopt(client_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) { 
@@ -45,15 +47,20 @@ int main(int argc, char const *argv[])
 	getaddrinfo(server_ip.c_str(), server_port.c_str(), &hints, &server_addr);
 
 	// TODO: Connect() to the server (hint: you'll need to use server_addr)
-	sock.connect((HOST, PORT));
+	connect(socket,&serv_addr,sizeof(serv_addr);
 	// TODO: Retreive user input
-	data=input();
+	printf("Please enter the message: ");
+    	bzero(socket_read_buffer,1024);
+    	fgets(socket_read_buffer,1023,stdin);
 	// TODO: Send() the user input to the server
-	sock.sendall(data);
+	n = write(sockfd,buffer,strlen(buffer));
+	
 	// TODO: Recieve any messages from the server and print it here. Don't forget to make sure the string is null terminated!
-	datar=sock.recv(10000);
+	n = read(socked,socket_read_buffer,1023);
+	printf("%s\n",socket_read_buffer);
 	// TODO: Close() the socket
-	sock.close();
+	close(socket);
+	
 
 	return 0; 
 } 
